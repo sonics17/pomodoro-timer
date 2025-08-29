@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="preload" href="/fonts/04b30.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <div class="spotify-widget">
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7HrWVEJM88mCuY51Q0PrlJ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+  <div class="pomodoro-container">
+    <div class="pomodoro-modes-auto">
+      <span class="mode-button-auto currentMode">
+        pomodoro
+      </span>
+      <span class="mode-button-auto">
+        short break
+      </span>
+      <span class="mode-button-auto">
+        long break
+      </span>
+    </div>
+    <div class="pomodoro-modes-manual">
+      <div class="mode-button-manual">
+        <input type="radio" name="mode" id="pomodoro-mode-manual" checked>
+        <label for="pomodoro-mode-manual">pomodoro</label>
+      </div>
+      <div class="mode-button-manual">
+        <input type="radio" name="mode" id="short-break-mode-manual">
+        <label for="short-break-mode-manual">short break</label>
+      </div>
+      <div class="mode-button-manual">
+        <input type="radio" name="mode" id="long-break-mode-manual">
+        <label for="long-break-mode-manual">long break</label>
+      </div>
+    </div>
+    <div class="pomodoro-timer">
+      <div class="time-container">
+        <div class="pomodoro-timer__time">
+          <span id="minutes">25</span>:<span id="seconds">00</span>
+        </div>
+        <button class="control-next">
+          <img src="./images/right-arrow.png" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="pomodoro-controls">
+      <button class="control-button control-start-pause">
+        <span class="play-text">start</span>
+        <span class="pause-text hidden">pause</span>
+      </button>
+      <button class="control-button control-reset">reset</button>
+      <button class="control-button control-settings">settings</button>
+    </div>
+    <dialog class="modal-settings">
+      <div class="modal-box">
+        <div class="timer-mode-switch">
+          <span>auto mode</span>
+          <label class="toggle-switch">
+            <input class="toggler" type="checkbox" checked>
+            <span class="rounded-button"></span>
+          </label>
+          <div class="switch-mode-message">
+            Turning off auto mode will reset the pomodoro cycle. <br>The total number of completed pomodoros will be saved.
+          </div>
+        </div>
+        <div class="change-timer-values">
+          <div class="change-timer-value__item">
+            <label for="pomodoro-time-input" class="change-timer-value__label">pomodoro</label>
+            <input
+              id="pomodoro-time-input"
+              type="number"
+              name="pomodoro"
+              class="change-timer-value__input"
+              value="25"
+              min="1"
+              max="99"
+              required
+              data-error-message="Only numbers from 1 to 99 are allowed"
+              aria-describedby="pomodoro-time-input-error"
+            />
+            <span>minutes</span>
+            <span
+              class="time-input--error form__error"
+              id="pomodoro-time-input-error"
+            ></span>
+          </div>
+          <div class="change-timer-value__item">
+            <label for="shortBreak-time-input" class="change-timer-value__label">short break</label>
+            <input
+              id="shortBreak-time-input"
+              type="number"
+              name="shortBreak"
+              class="change-timer-value__input"
+              value="5"
+              min="1"
+              max="99"
+              required
+              data-error-message="Only numbers from 1 to 99 are allowed"
+              aria-describedby="shortBreak-time-input-error"
+            />
+            <span>minutes</span>
+            <span
+              class="time-input--error form__error"
+              id="shortBreak-time-input-error"
+            ></span>
+          </div>
+          <div class="change-timer-value__item">
+            <label for="longBreak-time-input" class="change-timer-value__label">long break</label>
+            <input
+              id="longBreak-time-input"
+              type="number"
+              name="longBreak"
+              class="change-timer-value__input"
+              value="15"
+              min="1"
+              max="99"
+              required
+              data-error-message="Only numbers from 1 to 99 are allowed"
+              aria-describedby="longBreak-time-input-error"
+            />
+            <span>minutes</span>
+            <span
+              class="time-input--error form__error"
+              id="longBreak-time-input-error"
+            ></span>
+          </div>
+          <span
+              class="time-input--error form__error"
+              id="longBreak-time-input-error"
+            ></span>
+        </div>
+        <div class="modal-controls">
+          <button class="save-modal-button">save</button>
+          <button class="cancel-modal-button">cancel</button>
+        </div>
+      </div>
+    </dialog>
+    <div class="pomodoro-cycle-tomatoes">
+      <img id="tomato-1" src="./images/tomatoes/tomato-gray.png" alt="">
+      <img id="tomato-2" src="./images/tomatoes/tomato-gray.png" alt="">
+      <img id="tomato-3" src="./images/tomatoes/tomato-gray.png" alt="">
+      <img id="tomato-4" src="./images/tomatoes/tomato-gray.png" alt="">
+    </div>
+  </div>
+  <div class="total-tomatoes">
+    <img src="./images/tomatoes/tomato-red.png" alt="">
+    <span>х</span>
+    <span class="total-tomatoes-counter">0</span>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+</html>
