@@ -371,6 +371,28 @@ body {
     height: 2rem;
   }
 }
+@media (max-width: 768px) {
+  .control-button:active,
+  .control-next:active,
+  .mode-button-auto.currentMode,
+  .mode-button-manual input:checked + label {
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  .control-button {
+    transition: background-color 0.2s ease;
+  }
+  
+  .control-button:active {
+    background-color: #9a6cc5;
+  }
+  
+  .control-next:active img {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+}
 @media (max-width: 605px) {
   body {
     justify-content: space-between;
