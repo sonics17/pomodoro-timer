@@ -73,7 +73,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  margin-bottom: 3.5rem
 }
 
 .mode-button-manual input {
@@ -91,10 +90,7 @@ body {
   border: 2px solid #fff;
   width: 13.5rem;
 }
-.mode-button-manual label:hover {
-  border: 2px solid #000;
-  color: #000;
-}
+
 .mode-button-manual input:checked + label {
   background-color: rgba(255, 255, 255, 0.719);
   color: #000;
@@ -195,9 +191,6 @@ body {
   font-family: "Press Start 2P", sans-serif;
 }
 
-.control-button:hover {
-  background-color: #63358f;
-}
 .control-button:active {
   background-color: #9a6cc5;
 }
@@ -353,6 +346,18 @@ body {
   text-align: left;
   color: #85358f;
 }
+
+@media (hover: hover) {
+  .mode-button-manual label:hover {
+    border: 2px solid #000;
+    color: #000;
+    cursor: pointer;
+  }
+  .control-button:hover {
+    background-color: #63358f;
+  }
+}
+
 @media (max-width: 885px) {
   .pomodoro-container {
     max-width: none;
